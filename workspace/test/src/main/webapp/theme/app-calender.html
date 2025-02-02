@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Calendar</title>
+    <link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.css' rel='stylesheet' />
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.5/main.min.js'></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                editable: true,
+                selectable: true,
+                eventOverlap: false,
+                select: function (info) {
+                    document.getElementById('event-start-date').value = formatDate(info.start);
+                    document.getElementById('event-start-time').value = "12:00";
+                    document.getElementById('event-end-date').value = formatDate(info.end ? new Date(info.end - 1) : info.start);
+                    document.getElementById('event-end-time').value = "13:00";
+                    document.getElementById('event-modal').style.display = 'block';
+                },
+                eventClick: function (info) {
+                    document.getElementById('edit-event-title').value = info.event.title;
+                    document.getElementById('edit-event-start-date').value = formatDate(info.event.start);
+                    document.getElementById('edit-event-start-time').value = formatTime(info.event.start);
+                    document.getElementById('edit-event-end-date').value = info.event.end ? formatDate(info.event.end) : formatDate(info.event.start);
+                    document.getElementById('edit-event-end-time').value = info.event.end ? formatTime(info.event.end) : formatTime(info.event.start);
+                    document.getElementById('edit-event-color').value = info.event.backgroundColor;
+                    document.getElementById('edit-event-id').value = info.event.id;
+                    document.getElementById('edit-event-modal').style.display = 'block';
+                },
+                eventDrop: function (info) {
+                    alert('活動移動到: ' + formatDate(info.event.start));
+                }
+            });
+            calendar.render();
+
+            document.getElementById('add-event-btn').addEventListener('click', function () {
+                var title = document.getElementById('event-title').value;
+                var startDate = document.getElementById('event-start-date').value;
+                var startTime = document.getElementById('event-start-time').value;
+                var endDate = document.getElementById('event-end-date').value;
+                var endTime = document.getElementById('event-end-time').value;
+                var color = document.getElementById('event-color').value;
+
+                if (title && startDate && startTime) {
+                    var start = startDate + 'T' + startTime;
+                    var end = endDate && endTime ? endDate + 'T' + endTime : start;
+
+                    var newEvent = calendar.addEvent({
+                        id: String(new Date().getTime()), 
+                        title: title,
+                        start: start,
+                        end: end,
+                        allDay: false,
+                        backgroundColor: color
+                    });
+//                     app-calender.html:63 Uncaught TypeError: Cannot read properties of null (reading 'reset')
+//                     at HTMLButtonElement.<anonymous>
+                    document.getElementById('event-form').reset();
+                    document.getElementById('event-modal').style.display = 'none';
+                }
+            });
+            document.getElementById('add-event-btn').addEventListener('click', function () {
+                var title = document.getElementById('event-title').value;
+                if (title.trim() !== '') {
+                    document.getElementById('event-modal').classList.add('hidden');
+                }
+            });
+
+            document.getElementById('edit-event-btn').addEventListener('click', function () {
+                var eventId = document.getElementById('edit-event-id').value;
+                var event = calendar.getEventById(eventId);
+
+                if (event) {
+                    event.setProp('title', document.getElementById('edit-event-title').value);
+                    event.setStart(document.getElementById('edit-event-start-date').value + 'T' + document.getElementById('edit-event-start-time').value);
+                    event.setEnd(document.getElementById('edit-event-end-date').value + 'T' + document.getElementById('edit-event-end-time').value);
+                    event.setProp('backgroundColor', document.getElementById('edit-event-color').value);
+                }
+
+                document.getElementById('edit-event-modal').style.display = 'none';
+            });
+
+            document.getElementById('delete-event-btn').addEventListener('click', function () {
+                var eventId = document.getElementById('edit-event-id').value;
+                var event = calendar.getEventById(eventId);
+
+                if (event) {
+                    event.remove();
+                    document.getElementById('edit-event-modal').style.display = 'none';
+                }
+            });
+
+            document.getElementById('cancel-add-event-btn').addEventListener('click', function () {
+                console.log('取消按鈕被點擊'); // 測試這行有沒有執行
+                document.getElementById('event-modal').style.display = 'none';
+            });
+
+
+            document.getElementById('cancel-edit-event-btn').addEventListener('click', function () {
+                document.getElementById('edit-event-modal').style.display = 'none';
+            });
+
+            function formatDate(date) {
+                var d = new Date(date);
+                return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+            }
+
+            function formatTime(date) {
+                var d = new Date(date);
+                return String(d.getHours()).padStart(2, '0') + ':' + String(d.getMinutes()).padStart(2, '0');
+            }
+        });
+    </script>
+    <style>
+        #event-modal, #edit-event-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
+            border-radius: 8px;
+            max-width: 400px;
+            width: 100%;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id='calendar' style="max-width: 900px; margin: 40px auto;"></div>
+
+    <div id="event-modal">
+        <h3>新增活動</h3>
+        <input type="text" id="event-title" placeholder="活動名稱">
+        <input type="date" id="event-start-date">
+        <input type="time" id="event-start-time">
+        <input type="date" id="event-end-date">
+        <input type="time" id="event-end-time">
+        <input type="color" id="event-color">
+        <button id="add-event-btn">新增</button>
+        <button id="cancel-add-event-btn">取消</button>
+    </div>
+
+    <div id="edit-event-modal">
+        <h3>編輯活動</h3>
+        <input type="text" id="edit-event-title">
+        <input type="date" id="edit-event-start-date">
+        <input type="time" id="edit-event-start-time">
+        <input type="date" id="edit-event-end-date">
+        <input type="time" id="edit-event-end-time">
+        <input type="color" id="edit-event-color">
+        <input type="hidden" id="edit-event-id">
+        <button id="edit-event-btn">更新</button>
+        <button id="delete-event-btn">刪除</button>
+        <button id="cancel-edit-event-btn">取消</button>
+    </div>
+</body>
+</html>
