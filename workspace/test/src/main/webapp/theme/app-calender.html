@@ -134,7 +134,7 @@
 </head>
 <body>
     <div id='calendar' style="max-width: 900px; margin: 40px auto;"></div>
-
+<form id="event-form">
     <div id="event-modal">
         <h3>新增活動</h3>
         <input type="text" id="event-title" placeholder="活動名稱">
@@ -143,10 +143,10 @@
         <input type="date" id="event-end-date">
         <input type="time" id="event-end-time">
         <input type="color" id="event-color">
-        <button id="add-event-btn">新增</button>
-        <button id="cancel-add-event-btn">取消</button>
+        <button type="button" id="add-event-btn">新增</button>
+        <button type="button" id="cancel-add-event-btn">取消</button>
     </div>
-
+</form>
     <div id="edit-event-modal">
         <h3>編輯活動</h3>
         <input type="text" id="edit-event-title">
