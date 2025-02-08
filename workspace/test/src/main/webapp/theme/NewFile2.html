@@ -12,14 +12,6 @@
 	<link href="./css/style.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
-    <style type="text/css">
-    .imgact{
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-    </style>
 </head>
 
 <body>
@@ -300,9 +292,8 @@
 		<!--**********************************
             Sidebar end
         ***********************************-->
-        <div class="content-body">
     <div class="container mt-5">
-        
+        <h2 class="mb-4">活動列表</h2>
         <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addEventModal">新增活動</button>
         <table id="eventTable" class="table table-bordered table-hover text-center">
             <thead class="table-primary">
@@ -317,7 +308,7 @@
             <tbody id="eventTableBody">
                 <script>
                     let events = [
-                        {name: '活動名稱1', time: '2025-02-15 10:00 - 12:00', location: '台北市某地點', image: 'https://i.pinimg.com/236x/ca/e9/59/cae959cc679753ed62b8a4bd8357681d.jpg'},
+                        {name: '活動名稱1', time: '2025-02-15 10:00 - 12:00', location: '台北市某地點', image: 'https://via.placeholder.com/80'},
                         {name: '活動名稱2', time: '2025-03-01 14:00 - 16:00', location: '新北市某地點', image: 'https://via.placeholder.com/80'},
                         {name: '活動名稱3', time: '2025-03-10 09:00 - 11:00', location: '台中市某地點', image: 'https://via.placeholder.com/80'},
                         {name: '活動名稱4', time: '2025-03-15 13:00 - 15:00', location: '高雄市某地點', image: 'https://via.placeholder.com/80'},
@@ -333,7 +324,7 @@
                         let tableBody = document.getElementById('eventTableBody');
                         events.forEach(event => {
                             let row = `<tr onclick="goToDetails('${event.name}')">
-                                <td><img src="${event.image}" class="img-fluid rounded " alt="活動圖片"></td>
+                                <td><img src="${event.image}" class="img-fluid rounded" alt="活動圖片"></td>
                                 <td>${event.name}</td>
                                 <td>${event.time}</td>
                                 <td>${event.location}</td>
@@ -346,11 +337,6 @@
             </tbody>
         </table>
     </div>
-     <!--**********************************
-            Footer start
-        ***********************************-->
-        
-        </div>
 
 <script src="./vendor/global/global.min.js"></script>
 		<script src="./js/quixnav-init.js"></script>
