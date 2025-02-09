@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>活動詳情</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+    <link href="./css/style.css" rel="stylesheet">
+    <style>
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        label {
+            font-weight: bold;
+        }
+        input, textarea, select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        
+        .image-upload {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+/*             overflow-x: auto; */
+/*             max-height: 200px; */
+        }
+        .image-upload img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .image-upload img:hover {
+            opacity: 0.7;
+        }
+        .image-upload .add-image {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            border: 2px dashed #ccc;
+            border-radius: 5px;
+            font-size: 24px;
+            color: #ccc;
+            cursor: pointer;
+        }
+        .delete-mode img.selected {
+            border: 3px solid lightgray;
+            opacity: 0.6;
+        }
+        .delete-mode .add-image {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+        .full-width {
+            width: 100% !important;
+        }
+    </style>
+    <script>
+        function addImage() {
+            if (document.body.classList.contains('delete-mode')) return;
+            const input = document.createElement('input');
+            input.type = 'file';
+            input.accept = 'image/*';
+            input.onchange = function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const img = document.createElement('img');
+                        img.src = e.target.result;
+                        img.onclick = () => toggleSelection(img);
+                        document.querySelector('.image-upload').insertBefore(img, document.querySelector('.add-image'));
+                    }
+                    reader.readAsDataURL(file);
+                }
+            }
+            input.click();
+        }
+
+        function toggleSelection(img) {
+            if (document.body.classList.contains('delete-mode')) {
+                img.classList.toggle('selected');
+            }
+        }
+
+        function toggleDeleteMode() {
+            document.body.classList.toggle('delete-mode');
+        }
+
+        function deleteSelectedImages() {
+            document.querySelectorAll('.image-upload img.selected').forEach(img => img.remove());
+            document.body.classList.remove('delete-mode');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h2>活動詳情</h2>
+        <form>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>活動名稱:</label>
+                    <input type="text" name="activity_name" value="">
+                </div>
+                <div class="form-group">
+                    <label>活動類型:</label>
+                    <input type="text" name="activity_type_id">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>活動描述:</label>
+                <textarea name="activity_description"></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>開始時間:</label>
+                    <input type="datetime-local" name="start_time">
+                </div>
+                <div class="form-group">
+                    <label>結束時間:</label>
+                    <input type="datetime-local" name="end_time">
+                </div>
+            </div>
+            <div class="form-group full-width">
+                <label>活動圖片:</label>
+                <div class="image-upload">
+                    <img src="https://via.placeholder.com/100" onclick="toggleSelection(this)">
+                    <div class="add-image" onclick="addImage()">+</div>
+                </div>
+            
+                
+            </div>
+            <div>
+            <button type="button" class="btn btn-outline-dark" onclick="toggleDeleteMode()">選擇刪除圖片</button>
+                <button type="button" class="btn btn-outline-dark" onclick="deleteSelectedImages()">刪除選擇的圖片</button>
+            <button type="submit" class="btn btn-outline-primary" >更新活動</button>
+            </div>
+            
+        </form>
+    </div>
+</body>
+</html>
