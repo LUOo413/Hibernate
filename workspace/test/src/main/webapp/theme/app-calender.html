@@ -507,7 +507,8 @@
 
 
 		</div>
-		
+		<div class="content-body">
+    <div class="container">
 
 		<div id='calendar' style="max-width: 900px; margin: auto; margin-top: 100px"></div>
 		<form id="event-form">
@@ -525,28 +526,21 @@
 		</form>
 		<div id="edit-event-modal">
 			<h3>編輯活動</h3>
-			<input type="text" id="edit-event-title"> <input type="date"
-				id="edit-event-start-date"> <input type="time"
-				id="edit-event-start-time"> <input type="date"
-				id="edit-event-end-date"> <input type="time"
-				id="edit-event-end-time"> <input type="color"
-				id="edit-event-color"> <input type="hidden"
-				id="edit-event-id">
-			<button id="edit-event-btn">更新</button>
-			<button id="delete-event-btn">刪除</button>
-			<button id="cancel-edit-event-btn">取消</button>
+			活動:<input type="text" id="edit-event-title"> <hr> 
+			 開始日期:<input type="date" id="edit-event-start-date">
+			  <input type="time" id="edit-event-start-time"> <hr> 
+			  結束日期:<input type="date" id="edit-event-end-date"> <input type="time"
+				id="edit-event-end-time"><hr>  
+				顏色:<input type="color" id="edit-event-color"> <input type="hidden"
+				id="edit-event-id"><hr>
+			<button id="edit-event-btn" class="btn btn-outline-primary">更新</button>
+			<button id="delete-event-btn" class="btn btn-outline-primary">刪除</button>
+			<button id="cancel-edit-event-btn" class="btn btn-outline-primary">取消</button>
 		</div>
 		<!--**********************************
             Footer start
         ***********************************-->
-		<div class="footer">
-			<div class="copyright">
-				<p>
-					Copyright © Designed &amp; Developed by <a href="#" target="_blank">Quixkit</a>
-					2019
-				</p>
-			</div>
-		</div>
+		
 		<!--**********************************
             Footer end
         ***********************************-->
@@ -554,6 +548,7 @@
 
 
 
+	</div>
 	</div>
 	<!--**********************************
         Main wrapper end
