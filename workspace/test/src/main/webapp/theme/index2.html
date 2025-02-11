@@ -2,28 +2,52 @@
 <html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>活動管理</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon.png">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>活動管理</title>
+<link rel="icon" type="image/png" sizes="16x16"
+	href="./images/favicon.png">
 <!-- 	<link href="./vendor/pg-calendar/css/pignose.calendar.min.css" rel="stylesheet"> -->
 <!-- 	<link href="./vendor/chartist/css/chartist.min.css" rel="stylesheet"> -->
-	<link href="./css/style.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
-    <style type="text/css">
-    .imgact{
-            width: 80px;
-            height: 80px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-    </style>
+<link href="./css/style.css" rel="stylesheet">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css">
+<style type="text/css">
+.container {
+	max-width: 95%; /* 調整容器寬度 */
+}
+
+.imgact {
+	width: 80px;
+	height: 80px;
+	object-fit: cover;
+	border-radius: 5px;
+}
+
+.floating-button {
+	position: fixed;
+	bottom: 20px;
+	right: 20px;
+	width: 60px;
+	height: 60px;
+	background-color: #007bff;
+	color: white;
+	border: none;
+	border-radius: 50%;
+	font-size: 30px;
+	text-align: center;
+	line-height: 60px;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+	cursor: pointer;
+}
+</style>
 </head>
 
 <body>
-<!--*******************
+	<!--*******************
         Preloader start
     ********************-->
 	<div id="preloader">
@@ -47,14 +71,16 @@
             Nav header start
         ***********************************-->
 		<div class="nav-header">
-			<a href="index.html" class="brand-logo"> <img class="logo-abbr" src="./images/logo.png" alt=""> <img
-					class="logo-compact" src="./images/logo-text.png" alt=""> <img class="brand-title"
-					src="./images/logo-text.png" alt="">
+			<a href="index.html" class="brand-logo"> <img class="logo-abbr"
+				src="./images/logo.png" alt=""> <img class="logo-compact"
+				src="./images/logo-text.png" alt=""> <img class="brand-title"
+				src="./images/logo-text.png" alt="">
 			</a>
 
 			<div class="nav-control">
 				<div class="hamburger">
-					<span class="line"></span><span class="line"></span><span class="line"></span>
+					<span class="line"></span><span class="line"></span><span
+						class="line"></span>
 				</div>
 			</div>
 		</div>
@@ -84,15 +110,15 @@
 						</div>
 
 						<ul class="navbar-nav header-right">
-							<li class="nav-item dropdown notification_dropdown"><a class="nav-link" href="#"
-									role="button" data-toggle="dropdown">
+							<li class="nav-item dropdown notification_dropdown"><a
+								class="nav-link" href="#" role="button" data-toggle="dropdown">
 									<i class="mdi mdi-bell"></i>
 									<div class="pulse-css"></div>
-								</a>
+							</a>
 								<div class="dropdown-menu dropdown-menu-right">
 									<ul class="list-unstyled">
 										<li class="media dropdown-item"><span class="success"><i
-													class="ti-user"></i></span>
+												class="ti-user"></i></span>
 											<div class="media-body">
 												<a href="#">
 													<p>
@@ -100,20 +126,18 @@
 														Successfully
 													</p>
 												</a>
-											</div> <span class="notify-time">3:20 am</span>
-										</li>
+											</div> <span class="notify-time">3:20 am</span></li>
 										<li class="media dropdown-item"><span class="primary"><i
-													class="ti-shopping-cart"></i></span>
+												class="ti-shopping-cart"></i></span>
 											<div class="media-body">
 												<a href="#">
 													<p>
 														<strong>Jennifer</strong> purchased Light Dashboard 2.0.
 													</p>
 												</a>
-											</div> <span class="notify-time">3:20 am</span>
-										</li>
+											</div> <span class="notify-time">3:20 am</span></li>
 										<li class="media dropdown-item"><span class="danger"><i
-													class="ti-bookmark"></i></span>
+												class="ti-bookmark"></i></span>
 											<div class="media-body">
 												<a href="#">
 													<p>
@@ -121,20 +145,18 @@
 														unsolved.
 													</p>
 												</a>
-											</div> <span class="notify-time">3:20 am</span>
-										</li>
+											</div> <span class="notify-time">3:20 am</span></li>
 										<li class="media dropdown-item"><span class="primary"><i
-													class="ti-heart"></i></span>
+												class="ti-heart"></i></span>
 											<div class="media-body">
 												<a href="#">
 													<p>
 														<strong>David</strong> purchased Light Dashboard 1.0.
 													</p>
 												</a>
-											</div> <span class="notify-time">3:20 am</span>
-										</li>
+											</div> <span class="notify-time">3:20 am</span></li>
 										<li class="media dropdown-item"><span class="success"><i
-													class="ti-image"></i></span>
+												class="ti-image"></i></span>
 											<div class="media-body">
 												<a href="#">
 													<p>
@@ -142,29 +164,26 @@
 														Successfully
 													</p>
 												</a>
-											</div> <span class="notify-time">3:20 am</span>
-										</li>
+											</div> <span class="notify-time">3:20 am</span></li>
 									</ul>
 									<a class="all-notification" href="#">See all notifications
 										<i class="ti-arrow-right"></i>
 									</a>
-								</div>
-							</li>
-							<li class="nav-item dropdown header-profile"><a class="nav-link" href="#" role="button"
-									data-toggle="dropdown">
+								</div></li>
+							<li class="nav-item dropdown header-profile"><a
+								class="nav-link" href="#" role="button" data-toggle="dropdown">
 									<i class="mdi mdi-account"></i>
-								</a>
+							</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a href="./app-profile.html" class="dropdown-item"> <i class="icon-user"></i> <span
-											class="ml-2">Profile </span>
+									<a href="./app-profile.html" class="dropdown-item"> <i
+										class="icon-user"></i> <span class="ml-2">Profile </span>
 									</a> <a href="./email-inbox.html" class="dropdown-item"> <i
-											class="icon-envelope-open"></i> <span class="ml-2">Inbox
-										</span>
-									</a> <a href="./page-login.html" class="dropdown-item"> <i class="icon-key"></i>
-										<span class="ml-2">Logout </span>
+										class="icon-envelope-open"></i> <span class="ml-2">Inbox
+									</span>
+									</a> <a href="./page-login.html" class="dropdown-item"> <i
+										class="icon-key"></i> <span class="ml-2">Logout </span>
 									</a>
-								</div>
-							</li>
+								</div></li>
 						</ul>
 					</div>
 				</nav>
@@ -183,31 +202,32 @@
 					<li class="nav-label first">Main Menu</li>
 					<!-- <li><a href="index.html"><i class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
                     </li> -->
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-single-04"></i><span class="nav-text">Dashboard</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-single-04"></i><span
+							class="nav-text">Dashboard</span></a>
 						<ul aria-expanded="false">
 							<li><a href="./index.html">Dashboard 1</a></li>
 							<li><a href="./index2.html">Dashboard 2</a></li>
-						</ul>
-					</li>
+						</ul></li>
 
 					<li class="nav-label">Apps</li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-app-store"></i><span class="nav-text">Apps</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-app-store"></i><span
+							class="nav-text">Apps</span></a>
 						<ul aria-expanded="false">
 							<li><a href="./app-profile.html">Profile</a></li>
-							<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Email</a>
+							<li><a class="has-arrow" href="javascript:void()"
+								aria-expanded="false">Email</a>
 								<ul aria-expanded="false">
 									<li><a href="./email-compose.html">Compose</a></li>
 									<li><a href="./email-inbox.html">Inbox</a></li>
 									<li><a href="./email-read.html">Read</a></li>
-								</ul>
-							</li>
+								</ul></li>
 							<li><a href="./app-calender.html">Calendar</a></li>
-						</ul>
-					</li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-chart-bar-33"></i><span class="nav-text">Charts</span></a>
+						</ul></li>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-chart-bar-33"></i><span
+							class="nav-text">Charts</span></a>
 						<ul aria-expanded="false">
 							<li><a href="./chart-flot.html">Flot</a></li>
 							<li><a href="./chart-morris.html">Morris</a></li>
@@ -215,11 +235,11 @@
 							<li><a href="./chart-chartist.html">Chartist</a></li>
 							<li><a href="./chart-sparkline.html">Sparkline</a></li>
 							<li><a href="./chart-peity.html">Peity</a></li>
-						</ul>
-					</li>
+						</ul></li>
 					<li class="nav-label">Components</li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-world-2"></i><span class="nav-text">Bootstrap</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-world-2"></i><span
+							class="nav-text">Bootstrap</span></a>
 						<ul aria-expanded="false">
 							<li><a href="./ui-accordion.html">Accordion</a></li>
 							<li><a href="./ui-alert.html">Alert</a></li>
@@ -239,11 +259,11 @@
 							<li><a href="./ui-pagination.html">Pagination</a></li>
 							<li><a href="./ui-grid.html">Grid</a></li>
 
-						</ul>
-					</li>
+						</ul></li>
 
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-plug"></i><span class="nav-text">Plugins</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-plug"></i><span
+							class="nav-text">Plugins</span></a>
 						<ul aria-expanded="false">
 							<li><a href="./uc-select2.html">Select 2</a></li>
 							<li><a href="./uc-nestable.html">Nestedable</a></li>
@@ -251,13 +271,13 @@
 							<li><a href="./uc-sweetalert.html">Sweet Alert</a></li>
 							<li><a href="./uc-toastr.html">Toastr</a></li>
 							<li><a href="./map-jqvmap.html">Jqv Map</a></li>
-						</ul>
-					</li>
-					<li><a href="widget-basic.html" aria-expanded="false"><i class="icon icon-globe-2"></i><span
-								class="nav-text">Widget</span></a></li>
+						</ul></li>
+					<li><a href="widget-basic.html" aria-expanded="false"><i
+							class="icon icon-globe-2"></i><span class="nav-text">Widget</span></a></li>
 					<li class="nav-label">Forms</li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-form"></i><span class="nav-text">Forms</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-form"></i><span
+							class="nav-text">Forms</span></a>
 						<ul aria-expanded="false">
 							<li><a href="./form-element.html">Form Elements</a></li>
 							<li><a href="./form-wizard.html">Wizard</a></li>
@@ -265,58 +285,57 @@
 							<li><a href="form-pickers.html">Pickers</a></li>
 							<li><a href="form-validation-jquery.html">Jquery
 									Validate</a></li>
-						</ul>
-					</li>
+						</ul></li>
 					<li class="nav-label">Table</li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-layout-25"></i><span class="nav-text">Table</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-layout-25"></i><span
+							class="nav-text">Table</span></a>
 						<ul aria-expanded="false">
 							<li><a href="table-bootstrap-basic.html">Bootstrap</a></li>
 							<li><a href="table-datatable-basic.html">Datatable</a></li>
-						</ul>
-					</li>
+						</ul></li>
 
 					<li class="nav-label">Extra</li>
-					<li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
-								class="icon icon-single-copy-06"></i><span class="nav-text">Pages</span></a>
+					<li><a class="has-arrow" href="javascript:void()"
+						aria-expanded="false"><i class="icon icon-single-copy-06"></i><span
+							class="nav-text">Pages</span></a>
 						<ul aria-expanded="false">
 							<li><a href="./page-register.html">Register</a></li>
 							<li><a href="./page-login.html">Login</a></li>
-							<li><a class="has-arrow" href="javascript:void()" aria-expanded="false">Error</a>
+							<li><a class="has-arrow" href="javascript:void()"
+								aria-expanded="false">Error</a>
 								<ul aria-expanded="false">
 									<li><a href="./page-error-400.html">Error 400</a></li>
 									<li><a href="./page-error-403.html">Error 403</a></li>
 									<li><a href="./page-error-404.html">Error 404</a></li>
 									<li><a href="./page-error-500.html">Error 500</a></li>
 									<li><a href="./page-error-503.html">Error 503</a></li>
-								</ul>
-							</li>
+								</ul></li>
 							<li><a href="./page-lock-screen.html">Lock Screen</a></li>
-						</ul>
-					</li>
+						</ul></li>
 				</ul>
 			</div>
 		</div>
 		<!--**********************************
             Sidebar end
         ***********************************-->
-        <div class="content-body">
-    <div class="container mt-5">
-        
-        <button class="btn btn-success mb-3" data-bs-toggle="modal" data-bs-target="#addEventModal">新增活動</button>
-        <table id="eventTable" class="table table-bordered table-hover text-center">
-            <thead class="table-primary">
-                <tr>
-                    <th>活動圖片</th>
-                    <th>活動名稱</th>
-                    <th>活動時間</th>
-                    <th>地點</th>
-                    <th>瀏覽人數</th>
-                    <th>操作</th>
-                </tr>
-            </thead>
-            <tbody id="eventTableBody">
-                <script>
+		<div class="content-body">
+			<div class="container mt-2">
+				<button class="floating-button" onclick="openAddEventModal()">+</button>
+				<table id="eventTable"
+					class="table table-bordered table-hover text-center">
+					<thead class="table-primary">
+						<tr>
+							<th>活動圖片</th>
+							<th>活動名稱</th>
+							<th>活動時間</th>
+							<th>地點</th>
+							<th>瀏覽人數</th>
+							<th>操作</th>
+						</tr>
+					</thead>
+					<tbody id="eventTableBody">
+						<script>
                     let events = [
                         {name: '活動名稱1', time: '2025-02-15 10:00 - 12:00', location: '台北市某地點', visitor: '5', image: 'https://i.pinimg.com/236x/ca/e9/59/cae959cc679753ed62b8a4bd8357681d.jpg'},
                         {name: '活動名稱2', time: '2025-03-01 14:00 - 16:00', location: '新北市某地點', visitor: '8',  image: 'https://via.placeholder.com/80'},
@@ -345,25 +364,25 @@
                         });
                     });
                 </script>
-            </tbody>
-        </table>
-    </div>
-     <!--**********************************
+					</tbody>
+				</table>
+			</div>
+			<!--**********************************
             Footer start
         ***********************************-->
-        
-        </div>
 
-<script src="./vendor/global/global.min.js"></script>
+		</div>
+
+		<script src="./vendor/global/global.min.js"></script>
 		<script src="./js/quixnav-init.js"></script>
 		<script src="./js/custom.min.js"></script>
 
 		<script src="./vendor/chartist/js/chartist.min.js"></script>
 
 		<script src="./vendor/moment/moment.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
-    <script>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="https://cdn.datatables.net/2.2.2/js/dataTables.min.js"></script>
+		<script>
         $(document).ready(function () {
             $('#eventTable').DataTable({ "pageLength": 5 });
         });
@@ -377,9 +396,14 @@
         function goToDetails(eventName) {
             window.location.href = `activity-detail.html?name=${encodeURIComponent(eventName)}`;
         }
+        function openAddEventModal() {
+            // 在這裡添加你的新增活動邏輯，例如顯示表單或開啟彈出視窗
+            alert("新增活動視窗開啟");
+        }
     </script>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
